@@ -1,39 +1,35 @@
-Sistemas de Gerenciamento de Tarefas
+# Task Manager Flask Application
 
-Este projeto é um sistema de gerenciamento de tarefas simples construído com Flask, Flask-SQLAlchemy, Flask-Login e Flask-WTF, utilizando SQLite como banco de dados e Bootstrap 5 para a interface.
+Este projeto é um sistema de gerenciamento de tarefas simples construído com **Flask**, **Flask-SQLAlchemy**, **Flask-Login** e **Flask-WTF**, utilizando **SQLite** como banco de dados e **Bootstrap 5** para a interface.
 
-🗂️ Funcionalidades
+---
 
-Registro e autenticação de usuários (Flask-Login)
+## 🗂️ Funcionalidades
 
-CRUD completo de tarefas (criar, listar, editar, excluir)
+- Registro e autenticação de usuários (Flask-Login)
+- CRUD completo de tarefas (criar, listar, editar, excluir)
+- Proteção CSRF em formulários (Flask-WTF)
+- Páginas renderizadas com Jinja2 e Bootstrap 5
+- Banco de dados SQLite local (`tasks.db`)
 
-Proteção CSRF em formulários (Flask-WTF)
+---
 
-Páginas renderizadas com Jinja2 e Bootstrap 5
+## 🚀 Tecnologias
 
-Banco de dados SQLite local (tasks.db)
+- Python 3.x
+- Flask
+- Flask-SQLAlchemy
+- Flask-Login
+- Flask-WTF
+- Jinja2
+- SQLite
+- Bootstrap 5 (CDN)
 
-🚀 Tecnologias
+---
 
-Python 3.x
+## 📁 Estrutura do Projeto
 
-Flask
-
-Flask-SQLAlchemy
-
-Flask-Login
-
-Flask-WTF
-
-Jinja2
-
-SQLite
-
-Bootstrap 5 (CDN)
-
-📁 Estrutura do Projeto
-
+```
 task_manager/
 ├── app/
 │   ├── __init__.py        # Inicialização da aplicação e configuração
@@ -51,70 +47,80 @@ task_manager/
 ├── visualizar_db.py       # Script de depuração e visualização do banco
 ├── requirements.txt       # Dependências do projeto
 └── tasks.db               # Banco de dados SQLite (gerado após primeira execução)
+```
 
-⚙️ Como rodar localmente
+---
 
-Clone o repositório
+## ⚙️ Como rodar localmente
 
-git clone <URL_DO_REPO>
-cd task_manager
+1. **Clone o repositório**  
+   ```bash
+   git clone <URL_DO_REPO>
+   cd task_manager
+   ```
 
-Crie e ative um ambiente virtual
+2. **Crie e ative um ambiente virtual**  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate     # Linux/Mac
+   venv\Scripts\activate      # Windows
+   ```
 
-python -m venv venv
-source venv/bin/activate     # Linux/Mac
-venv\Scripts\activate      # Windows
+3. **Instale as dependências**  
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Instale as dependências
+4. **Inicialize o banco de dados**  
+   Na primeira execução, crie as tabelas manualmente executando no Python shell:
+   ```bash
+   python
+   >>> from app import create_app, db
+   >>> app = create_app()
+   >>> app.app_context().push()
+   >>> db.create_all()
+   >>> exit()
+   ```
 
-pip install -r requirements.txt
+5. **Execute a aplicação**  
+   ```bash
+   python run.py
+   ```
+   Acesse `http://127.0.0.1:5000` no navegador.
 
-Inicialize o banco de dadosNa primeira execução, crie as tabelas manualmente executando no Python shell:
+---
 
-python
->>> from app import create_app, db
->>> app = create_app()
->>> app.app_context().push()
->>> db.create_all()
->>> exit()
+## 🎯 Uso
 
-Execute a aplicação
+1. **Registrar** um novo usuário:  
+   Acesse `/register`, preencha usuário e senha.
 
-python run.py
+2. **Login**:  
+   Acesse `/login`, entre com suas credenciais.
 
-Acesse http://127.0.0.1:5000 no navegador.
+3. **Gerenciar Tarefas**:  
+   - `GET /tasks` — lista de tarefas do usuário.
+   - `GET /tasks/create` — formulário para criar nova tarefa.
+   - `GET /tasks/edit/<id>` — editar tarefa existente.
+   - `POST /tasks/delete/<id>` — excluir tarefa.
 
-🎯 Uso
+---
 
-Registrar um novo usuário:Acesse /register, preencha usuário e senha.
+## 📜 Licença
 
-Login:Acesse /login, entre com suas credenciais.
+Este projeto está licenciado sob a [MIT License](LICENSE).
 
-Gerenciar Tarefas:
+---
 
-GET /tasks — lista de tarefas do usuário.
+## 🤝 Contribuição
 
-GET /tasks/create — formulário para criar nova tarefa.
+1. Fork este repositório.  
+2. Crie uma branch para sua feature: `git checkout -b feature/nova-funcionalidade`  
+3. Commit suas mudanças: `git commit -m 'Adiciona nova funcionalidade'`  
+4. Push para a branch: `git push origin feature/nova-funcionalidade`  
+5. Abra um Pull Request.
 
-GET /tasks/edit/<id> — editar tarefa existente.
+---
 
-POST /tasks/delete/<id> — excluir tarefa.
-
-📜 Licença
-
-Este projeto está licenciado sob a MIT License.
-
-🤝 Contribuição
-
-Fork este repositório.
-
-Crie uma branch para sua feature: git checkout -b feature/nova-funcionalidade
-
-Commit suas mudanças: git commit -m 'Adiciona nova funcionalidade'
-
-Push para a branch: git push origin feature/nova-funcionalidade
-
-Abra um Pull Request.
-
-Desenvolvido por Hugo Leonardo Melo — GitHub | LinkedIn
+> Desenvolvido por Hugo Leonardo Melo — [GitHub](https://github.com/DevHgL) | [LinkedIn](https://www.linkedin.com/in/hugolmelo/)
 
