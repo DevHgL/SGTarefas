@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="text-muted">[TEMPLATE: register.html]</p>
+
+<h2>Registrar</h2>
+<form method="post" action="{{ url_for('main.register') }}">
+    {{ form.hidden_tag() }}
+
+    <pre>Request.form: {{ request.form }}</pre>
+    <pre>Form.errors: {{ form.errors }}</pre>
+
+    <div class="mb-3">
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control") }}
+        {% for err in form.username.errors %}
+            <div class="text-danger small">{{ err }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+        {% for err in form.password.errors %}
+            <div class="text-danger small">{{ err }}</div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Registrar</button>
+</form>
+{% endblock %}

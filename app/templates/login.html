@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Login</h2>
+<form method="post" action="{{ url_for('main.login') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control") }}
+        {% if form.username.errors %}
+            {% for err in form.username.errors %}
+                <div class="text-danger small">{{ err }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+        {% if form.password.errors %}
+            {% for err in form.password.errors %}
+                <div class="text-danger small">{{ err }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+</form>
+{% endblock %}
